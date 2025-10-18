@@ -1,30 +1,35 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EmployeeManagement.BL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.UI.Controllers
 {
     public class EmployeeController : Controller
     {
+        EmployeeService employeeService = new EmployeeService();
+
         // GET: EmployeeController
         public ActionResult Index()
-        {
-            List<EmployeeViewModel> list = new List<EmployeeViewModel>();
+        { 
+            //from employee service
+            var employeeBLModelList = employeeService.GetAllEmployees(); //vishnu, sayful
 
-            EmployeeViewModel model1 = new EmployeeViewModel();
-            model1.EmployeeName = "Vishnu";
-            model1.EmployeeID = "1";
-            model1.Salary = 1000;
+            //convert business model "Employee" to view model "EmployeeViewModel"
 
-            list.Add(model1);
+            List<EmployeeViewModel> viewModelList = new List<EmployeeViewModel>();
 
-            EmployeeViewModel model2 = new EmployeeViewModel();
-            model2.EmployeeName = "Sayful";
-            model2.EmployeeID = "2";
-            model2.Salary = 2000;
+            foreach (var employeeBLModel in employeeBLModelList)
+            {
+                //1st Iteration Vishnu
 
-            list.Add(model2);
+                EmployeeViewModel viewModel = new EmployeeViewModel();
+                viewModel.EmployeeID = employeeBLModel.EmployeeID;
+                viewModel.EmployeeName = employeeBLModel.EmployeeName;
+                viewModel.Salary = employeeBLModel.Salary;
+                viewModelList.Add(viewModel);
+            }
 
-            return View(list);
+            return View(viewModelList);
         }
 
         // GET: EmployeeController/Details/5
