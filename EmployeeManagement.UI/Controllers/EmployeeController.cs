@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.BL;
+using EmployeeManagement.DL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,13 +7,24 @@ namespace EmployeeManagement.UI.Controllers
 {
     public class EmployeeController : Controller
     {
-        EmployeeService employeeService = new EmployeeService();
+        //EmployeeService employeeService = new EmployeeService();
+
+        ILogging logObect;
+        IEmployeeService employeeService;
+
+        public EmployeeController(ILogging logObjParam, IEmployeeService serviceParam) //inject DatabaseLog object to this constructor
+        {
+            logObect = logObjParam;
+            logObect.LogError("Error message");
+
+            employeeService = serviceParam;
+        }
 
         // GET: EmployeeController
         public ActionResult Index()
         { 
             //from employee service
-            var employeeBLModelList = employeeService.GetAllEmployees(); //vishnu, sayful
+            var employeeBLModelList = employeeService.GetAll(); //vishnu, sayful
 
             //convert business model "Employee" to view model "EmployeeViewModel"
 

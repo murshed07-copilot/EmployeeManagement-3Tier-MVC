@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.DL
 {
-    internal class EmployeeDataService : IEmployeeData
+    internal class EmployeeDataService : IEmployeeDataService
     {
         public List<Employee> GetAllEmployees()
         {

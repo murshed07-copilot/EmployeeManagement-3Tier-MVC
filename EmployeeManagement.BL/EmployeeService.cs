@@ -1,4 +1,5 @@
-﻿using EmployeeManagement.Model;
+﻿using EmployeeManagement.DL;
+using EmployeeManagement.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.BL
 {
-    public class EmployeeService
+    public class EmployeeService : IEmployeeService
     {
-        public List<Employee> GetAllEmployees()
+        public List<Employee> GetAll()
         {
             List<Employee> list = new List<Employee>();
 
@@ -29,5 +30,13 @@ namespace EmployeeManagement.BL
 
             return list;
         }
+
+        //public ILogging GetLogFramework()
+        //{
+        //    //TextLog logObject = new TextLog();
+        //    //return logObject;
+
+        //    return new TextLog();
+        //}
     }
 }

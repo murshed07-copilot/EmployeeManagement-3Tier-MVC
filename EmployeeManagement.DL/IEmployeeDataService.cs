@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.DL
 {
-    internal interface IEmployeeData
+    internal interface IEmployeeDataService
     {
         List<Employee> GetAllEmployees();
     }
+   
 }

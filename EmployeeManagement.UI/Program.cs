@@ -1,7 +1,14 @@
+using EmployeeManagement.BL;
+using EmployeeManagement.DL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//builder.Services.AddScoped<EmployeeManagement.DL.ILogger, TextLog>();
+builder.Services.AddScoped<ILogging, TextLog>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 
