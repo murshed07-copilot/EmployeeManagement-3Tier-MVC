@@ -20,7 +20,7 @@ namespace EmployeeManagement.UI.Controllers
             employeeService = serviceParam;
         }
 
-        // GET: EmployeeController
+        // GET:  
         public ActionResult Index()
         { 
             //from employee service

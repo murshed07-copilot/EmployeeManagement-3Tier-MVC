@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 //builder.Services.AddScoped<EmployeeManagement.DL.ILogger, TextLog>();
 builder.Services.AddScoped<ILogging, TextLog>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IEmployeeDataService, EmployeeDataService>();
 
 var app = builder.Build();
 

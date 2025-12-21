@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace EmployeeManagement.DL
 {
-    internal interface IEmployeeDataService
+    public interface IEmployeeDataService  // Changed access modifier to public "from the internal"
     {
         List<Employee> GetAllEmployees();
     }
-   
+
 }

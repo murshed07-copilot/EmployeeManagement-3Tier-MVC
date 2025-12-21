@@ -9,26 +9,26 @@ using System.Threading.Tasks;
 namespace EmployeeManagement.BL
 {
     public class EmployeeService : IEmployeeService
+
     {
-        public List<Employee> GetAll()
+        ILogging logMessage;
+        IEmployeeDataService dataService;
+        public EmployeeService(ILogging logObjParam, IEmployeeDataService dataServicePrem) //inject (dependency injection) DatabaseLog object to this "constructor"
         {
-            List<Employee> list = new List<Employee>();
+            logMessage = logObjParam;
+            dataService = dataServicePrem;
 
-            Employee model1 = new Employee();
-            model1.EmployeeName = "Vishnu";
-            model1.EmployeeID = "1";
-            model1.Salary = 1000;
+            logMessage.LogError("Error message from EmployeeService");
+            
+        }
 
-            list.Add(model1);
+        public List<Employee> GetAll()   // how can I call EmployeeDataService's - GetAllEmployees method here?
+        {
+            var employee = dataService.GetAllEmployees();
+            logMessage.LogError("Error message from EmployeeDataService");
+            return employee;
 
-            Employee model2 = new Employee();
-            model2.EmployeeName = "Sayful";
-            model2.EmployeeID = "2";
-            model2.Salary = 2000;
-
-            list.Add(model2);
-
-            return list;
+            //return list;
         }
 
         //public ILogging GetLogFramework()
@@ -40,3 +40,5 @@ namespace EmployeeManagement.BL
         //}
     }
 }
+
+
