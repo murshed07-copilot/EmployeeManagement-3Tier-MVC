@@ -10,7 +10,7 @@ namespace EmployeeManagement.DL
 {
     public interface IEmployeeDataService  // Changed access modifier to public "from the internal"
     {
-        List<Employee> GetAllEmployees();
+        List<EmployeeDO> GetAllEmployees();
     }
 
 }

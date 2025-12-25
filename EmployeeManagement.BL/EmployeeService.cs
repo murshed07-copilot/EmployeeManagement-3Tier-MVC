@@ -22,11 +22,20 @@ namespace EmployeeManagement.BL
             
         }
 
-        public List<Employee> GetAll()   // how can I call EmployeeDataService's - GetAllEmployees method here?
+        public List<EmployeeDO> GetAll()   // how can I call EmployeeDataService's - GetAllEmployees method here?
         {
-            var employee = dataService.GetAllEmployees();
-            logMessage.LogError("Error message from EmployeeDataService");
-            return employee;
+            List<EmployeeDO> employeeList = new List<EmployeeDO>();
+
+            try
+            {
+                employeeList = dataService.GetAllEmployees();
+            }
+            catch (Exception ex)
+            {
+                logMessage.LogError(ex.Message);
+            }
+            
+            return employeeList;
 
             //return list;
         }

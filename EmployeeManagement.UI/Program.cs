@@ -1,10 +1,17 @@
 using EmployeeManagement.BL;
 using EmployeeManagement.DL;
+using EmployeeManagement.DL.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Scaffold-DbContext "Server=INRJNM0OFFLT041;Database=EmployeeManagement;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<EmployeeManagementContext>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EmpDBConnection")));
 
 //builder.Services.AddScoped<EmployeeManagement.DL.ILogger, TextLog>();
 builder.Services.AddScoped<ILogging, TextLog>();

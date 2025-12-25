@@ -9,6 +9,6 @@ namespace EmployeeManagement.BL
 {
     public interface IEmployeeService
     {
-        List<Employee> GetAll();
+        List<EmployeeDO> GetAll();
     }
 }
